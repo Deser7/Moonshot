@@ -1,3 +1,11 @@
+//
+//  HorizontalScrollView.swift
+//  Moonshot
+//
+//  Created by Наташа Спиридонова on 27.07.2025.
+//
+
+
 import SwiftUI
 
 struct HorizontalScrollView: View {
@@ -35,4 +43,19 @@ struct HorizontalScrollView: View {
             }
         }
     }
+}
+
+#Preview("With Data") {
+    let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+    
+    let crew = missions[0].crew.map { member in
+        CrewMember(role: member.role, astronaut: astronauts[member.name]!)
+    }
+    
+    return NavigationStack {
+        HorizontalScrollView(crew: crew)
+            .background(.darkBackground)
+    }
+    .preferredColorScheme(.dark)
 }
