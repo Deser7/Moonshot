@@ -16,12 +16,7 @@ struct MissonRowView: View {
         ScrollView {
             LazyVStack(spacing: 10) {
                 ForEach(missions) { mission in
-                    NavigationLink {
-                        MissionView(
-                            mission: mission,
-                            astronauts: astronauts
-                        )
-                    } label: {
+                    NavigationLink(value: mission) {
                         HStack(spacing: 0) {
                             MissionImageView(
                                 image: mission.image,
@@ -39,6 +34,12 @@ struct MissonRowView: View {
                 }
             }
             .padding(.horizontal)
+        }
+        .navigationDestination(for: Mission.self) { mission in
+            MissionView(
+                mission: mission,
+                astronauts: astronauts
+            )
         }
         .backgroundStyle(.darkBackground)
     }
