@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MissonRowView: View {
+struct MissonListView: View {
     let missions: [Mission]
     let astronauts: [String: Astronaut]
     
@@ -50,7 +50,7 @@ struct MissonRowView: View {
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     
     return NavigationStack {
-        MissonRowView(missions: missions, astronauts: astronauts)
+        MissonListView(missions: missions, astronauts: astronauts)
     }
     .preferredColorScheme(.dark)
 }

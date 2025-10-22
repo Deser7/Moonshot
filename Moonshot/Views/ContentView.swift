@@ -21,7 +21,7 @@ struct ContentView: View {
         NavigationStack {
             Group {
                 if showingList {
-                    MissonRowView(
+                    MissonListView(
                         missions: missions,
                         astronauts: astronauts
                     )
